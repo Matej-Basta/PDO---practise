@@ -25,5 +25,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 $all_results = $statement->fetchAll();
 
 
+var_dump($all_results);
+
 echo $success ? "yes" : "no";
 
