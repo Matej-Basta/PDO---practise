@@ -9,6 +9,21 @@ try{
     );
 } catch (PDOException $e) {
     echo "Connection failer: " . $e->getMessage();
+    exit();
 }
 
-echo "end";
+$query = "
+    SELECT `cities`.*
+    FROM `cities`
+    WHERE `name` = 'New York';
+";
+
+$statement = $connection->prepare($query);
+$success = $statement->execute();
+
+$statement->setFetchMode(PDO::FETCH_OBJ);
+$all_results = $statement->fetchAll();
+
+
+echo $success ? "yes" : "no";
+
